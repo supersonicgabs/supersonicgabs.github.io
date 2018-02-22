@@ -20,7 +20,7 @@ defaults:
   values:
     layout: post
 description: My preety awesome Github Pages boilerplate ;)
-baseurl: "/johnyplate"
+baseurl: "/supersonicgabs"
 url: http://supersonicgabs.github.io
 markdown: kramdown
 sass:
