@@ -1,12 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>titulo</title>
-</head>
-<body>
-    <h1>hello world</h1>
-</body>
-</html>
+---
+layout: default
+sections:
+  hero:
+    title: Home
+    classes: hero
+  github:
+    title: Github
+  features:
+    title: Features
+    classes: hero dark
+  about:
+    title: Sobre
+---
+
+{% for s in page.sections %}
+
+  {% assign id = s[0] %}
+  {% assign section = s[1] %}
+
+  <section class="page-content section-{{ id }} {{ section.classes }}" id="{{ id }}">
+
+    {% include sections/{{ id }}.html %}
+
+  </section>
+
+{% endfor %}
