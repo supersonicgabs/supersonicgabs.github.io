@@ -20,8 +20,8 @@ defaults:
   values:
     layout: post
 description: My preety awesome Github Pages boilerplate ;)
-baseurl: "/supersonicgabs"
-url: http://github.com/supersonicgabs/supersonicgabs.github.io
+baseurl: "http://supersonicgabs.github.io"
+url: http://supersonicgabs.github.io
 markdown: kramdown
 sass:
   style: compressed
