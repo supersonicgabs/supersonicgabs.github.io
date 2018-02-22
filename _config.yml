@@ -21,7 +21,7 @@ defaults:
     layout: post
 description: My preety awesome Github Pages boilerplate ;)
 baseurl: "/johnyplate"
-url: http://johnylab.net
+url: http://supersonicgabs.github.io
 markdown: kramdown
 sass:
   style: compressed
