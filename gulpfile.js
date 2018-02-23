@@ -8,7 +8,7 @@ var sourcemaps  = require('gulp-sourcemaps');
 var jekyll   = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll';
 var messages = {
     jekyllBuild: '<span style="color: grey">Running:</span> $ jekyll build'
-}; 
+};
 var browserSyncRoutes = {
     /**
      * Comment this if you don't use a site.baseurl in _config.yml
