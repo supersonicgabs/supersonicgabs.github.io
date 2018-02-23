@@ -20,6 +20,8 @@ body
   font-feature-settings: "kern" 1
   font-kerning: normal
   box-sizing: border-box
+  background-image: url('../img/layout/bg-body-4.jpg')
+  background-size: 20%
   *
     box-sizing: inherit
 
@@ -28,6 +30,13 @@ blockquote, pre, ul, ol, dl, figure,
 %vertical-rhythm 
   margin-top: $spacing-unit / 2
   margin-bottom: $spacing-unit / 2
+
+h2
+  font-family: $logo-font-family
+
+h1, h3
+  font-family: $title-font-family
+  text-align: center
 
 img 
   max-width: 100%
@@ -91,6 +100,7 @@ a
   &:hover, &:focus, &:active
     color: $text-color
     text-decoration: underline
+    color: $link-color
 
 abbr[title]
   border-bottom: none // normalize.css Chrome 57-, FF 39-

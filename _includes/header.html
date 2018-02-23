@@ -2,7 +2,7 @@
 
   <div class="wrapper">
 
-    <a class="site-title" href="{{ site.baseurl }}/"><h2>[supersonic.gabs]</h1></a>
+    <a class="site-title" href="{{ site.baseurl }}/"><h2><b>[</b>supersonic<b>.</b>gabs<b>]</b></h1></a>
 
     <nav class="site-nav">
       <a href="#" class="menu-icon">
@@ -14,11 +14,16 @@
       </a>
 
       <div class="trigger">
-        {% for my_page in site.pages %}
-          {% if my_page.nav-title %}
-          <a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">•{{ my_page.nav-title }}</a>
-          {% endif %}
-        {% endfor %}
+          {% for item in site.data.menu %}
+          {% capture url %}
+            {% if item.url contains "://" %}
+              {{ item.url }}
+            {% else %}
+              {{ site.baseurl }}{{ item.url }}
+            {% endif %}
+          {% endcapture %}
+          <a href="{{ url }}" class="page-link" {% if item.url contains "://" %}target="_blank"{% endif %} data-cell="shrink"><b>•</b> {{item.title}}</a>
+          {% endfor %}
       </div>
     </nav>
 

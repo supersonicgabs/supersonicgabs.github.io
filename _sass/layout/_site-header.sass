@@ -1,6 +1,10 @@
 .site-header
     min-height: 56px
     position: relative
+    background-color: rgba(0,0,0,0.87)
+    b
+        font-weight: normal
+        color: $link-color
 
 .site-title
     float: left
@@ -15,10 +19,12 @@
     .menu-icon 
         display: none
 
-    .page-link 
-        color: $text-color
+    .page-link
+        color: $white-color
         line-height: $base-line-height
         margin-left: 20px
+        &:hover
+            color: $link-color
 
     @include media-query($on-palm) 
         position: absolute
