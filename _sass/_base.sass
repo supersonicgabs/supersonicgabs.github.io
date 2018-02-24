@@ -33,10 +33,12 @@ blockquote, pre, ul, ol, dl, figure,
 
 h2
   font-family: $logo-font-family
+  color: $brand-color
 
-h1, h3
-  font-family: $title-font-family
+h1, h4
+  font-family: $logo-font-family
   text-align: center
+  font-weight: bold !important  
 
 img 
   max-width: 100%
@@ -92,13 +94,12 @@ h1, h2, h3, h4, h5, h6
   transition: .3s ease-in-out
 
 a
-  color: $brand-color
+  color: $text-color
   text-decoration: none
   background-color: transparent // normalize.css IE 10
   -webkit-text-decoration-skip: objects // normalize.css iOS 8+, Safari 8+
   @extend %transition
   &:hover, &:focus, &:active
-    color: $text-color
     text-decoration: underline
     color: $link-color
 
@@ -207,3 +208,32 @@ pre
     color: inherit
     path 
       fill: currentcolor
+
+.center
+  text-align: center
+
+.foto
+  width: 100%        
+  overflow: hidden
+  position: relative
+
+  img
+    position: absolute
+    left: 50%
+    top: 50%
+    height: 100%
+    width: auto
+    -webkit-transform: translate(-50%,-50%)
+    -ms-transform: translate(-50%,-50%)
+    -moz-transform: translate(-50%,-50%)
+    -o-transform: translate(-50%,-50%)
+    transform: translate(-50%,-50%)
+
+  img.portrait
+    width: 100% 
+    height: auto 
+
+  img.landscape
+    width: auto
+    max-width: unset
+    height: 100% 

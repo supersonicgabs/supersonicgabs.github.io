@@ -1,45 +1,45 @@
 ---
 layout: default
-sections:
-  hero:
-    title: Home
-    classes: hero
-  github:
-    title: Github
-  features:
-    title: Features
-    classes: hero dark
-  about:
-    title: Sobre
+isPaginated: true
+
 ---
 
-<section data-area="main-content">
 <div class="wrapper" data-grid="spacing">
   <div data-cell="3of4">
+      {% for post in paginator.posts %}        
+        <h1>
+          <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h1>
+        <p class="center">{{ post.date | date: "%b %-d, %Y" }}</p>
+        <div class="foto">
+            <img src="{{ post.img }}" class="portrait" alt="">
+          </div>        
+        <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 200 }}</p>
+    {% endfor %}
+
     <h1>Título da matéria</h3>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque debitis officia, saepe aut officiis ea perferendis asperiores dolores. Facere praesentium ducimus veritatis cum ex? Numquam alias iste laudantium inventore temporibus.</p>
-  </div>
-  <div data-cell="1of4">
-    <section data-area="profile">
       <div class="foto">
-        <img src="img/ilustrativas/profile-2.JPG" alt="">
+        <img src="../img/ilustrativas/black-panther.jpg" class="portrait" alt="">
       </div>
-      <h3>Gabriel Fonseca</h3>
-        <p>Fã de bandas britânicas, Star Wars e cultura pop em geral. Front-end Developer e admirador de coisas retrôs, dando voltas pelo Sol desde 1995.</p>
-    </section>
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque debitis officia, saepe aut officiis ea perferendis asperiores dolores. Facere praesentium ducimus veritatis cum ex? Numquam alias iste laudantium inventore temporibus.</p>
+
+
+      <footer class="pagination">
+        <div data-grid="center spacing justify">
+            {% if paginator.previous_page %}
+                <a data-cell="shrink" href="{{ site.baseurl }}{{ paginator.previous_page_path }}" class="previous icon">{% include svg/left-arrow.svg %}</a>
+            {% else %}
+                <span data-cell="shrink" class="previous icon">{% include svg/left-arrow.svg %}</span>
+            {% endif %}
+            <span data-cell="shrink" class="page_number">Página {{ paginator.page }} de {{ paginator.total_pages }}</span>
+            {% if paginator.next_page %}
+                <a data-cell="shrink" href="{{ site.baseurl }}{{ paginator.next_page_path }}" class="next icon">{% include svg/next-arrow.svg %}</a>
+            {% else %}
+                <span data-cell="shrink" class="next icon">{% include svg/next-arrow.svg %}</span>
+            {% endif %}
+        </div>
+      </footer>
   </div>
+  {% include profile.html %}
 </div>
-</section>
 
-{% for s in page.sections %}
-
-  {% assign id = s[0] %}
-  {% assign section = s[1] %}
-
-  <section class="page-content section-{{ id }} {{ section.classes }}" id="{{ id }}">
-
-    {% include sections/{{ id }}.html %}
-
-  </section>
-
-{% endfor %}

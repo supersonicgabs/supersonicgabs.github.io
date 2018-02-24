@@ -16,13 +16,18 @@ defaults:
     layout: page
 - scope:
     path: ''
-    type: posts
+    type: posts    
   values:
     layout: post
+    permalink: ':categories/:title.html'
 description: My preety awesome Github Pages boilerplate ;)
 baseurl: "/"
 url: http://supersonicgabs.github.io
 markdown: kramdown
+paginate: 10
+paginate_path: '/:num/'
+plugins:
+  - jekyll-paginate
 sass:
   style: compressed
 exclude:
