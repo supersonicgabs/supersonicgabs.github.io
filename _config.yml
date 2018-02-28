@@ -22,7 +22,7 @@ defaults:
     permalink: ':categories/:title.html'
 description: My preety awesome Github Pages boilerplate ;)
 baseurl: ""
-url: http://supersonicgabs.github.io
+url: 'http://supersonicgabs.github.io'
 markdown: kramdown
 paginate: 10
 paginate_path: '/:num/'
