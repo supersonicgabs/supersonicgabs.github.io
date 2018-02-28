@@ -1,7 +1,70 @@
+.share-btn
+    display: inline-block
+    vertical-align: middle
+    text-align: center
+    padding: .5em
+    width: 2.5em
+    height: 2.5em
+    border-radius: 500px
+    &:before
+        content: none
+    svg
+        width: 1.2em
+        height: 1.2em
+        color: inherit
+        *
+            fill: currentcolor
+    &.btn-fb
+        color: $link-color
+        &:hover
+            background-color: #3b5998
+            color: #fff
+    &.btn-tw
+        color: $link-color
+        &:hover
+            background-color: #55acee
+            color: #fff
+    &.btn-li
+        color: $link-color
+        &:hover
+            background-color: #007bb5
+            color: #fff
+    &.btn-gp
+        color: $link-color
+        &:hover
+            background-color: #dd4b39
+            color: #fff
+    &.btn-wa
+        color: $link-color
+        &:hover
+            background-color: #4dc247
+            color: #fff
+
 [data-area~="polaroid"]
     width: 100%
     background-color: #fff
     padding: 20px 10px 5px 10px
+    -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.4)
+    -moz-box-shadow:    1px 1px 5px 0px rgba(0, 0, 0, 0.4)
+    box-shadow:         1px 1px 5px 0px rgba(0, 0, 0, 0.4)
+    position: relative
+
+    &:after, &:before
+        content: ''
+        position: absolute
+        z-index: 9
+        width: 44px
+        height: 44px
+        background-image: url('../img/ilustrativas/fita-adesiva.png')
+        background-size: 100%
+
+    &:after
+        top: -12px
+        right: -12px
+
+    &:before
+        bottom: -14px
+        left: -14px        
 
     .foto
         height: 220px

@@ -7,23 +7,17 @@ isPaginated: true
 <div class="wrapper" data-grid="spacing">
   <div data-cell="3of4">
       {% for post in paginator.posts %}        
-        <h1>
-          <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h1>
-        <p class="center">{{ post.date | date: "%b %-d, %Y" }}</p>
-        <div class="foto">
-            <img src="{{ post.img }}" class="portrait" alt="">
-          </div>        
-        <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 200 }}</p>
+        <section data-area="main-content">
+            <h1>
+              <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+            </h1>
+            <p class="center">{{ post.date | date: "%b %-d, %Y" }}</p>
+            <div class="foto">
+                <img src="{{ post.img }}" class="portrait" alt="">
+              </div>        
+            <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 200 }}</p>
+        </section>
     {% endfor %}
-
-    <h1>Título da matéria</h3>
-      <div class="foto">
-        <img src="../img/ilustrativas/black-panther.jpg" class="portrait" alt="">
-      </div>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque debitis officia, saepe aut officiis ea perferendis asperiores dolores. Facere praesentium ducimus veritatis cum ex? Numquam alias iste laudantium inventore temporibus.</p>
-
-
       <footer class="pagination">
         <div data-grid="center spacing justify">
             {% if paginator.previous_page %}

@@ -4,46 +4,63 @@ layout: default
 
 <section class="wrapper" data-grid="spacing">
   <div data-cell="3of4">
-  <article class="post page-content" itemscope itemtype="http://schema.org/BlogPosting">
-
-  <header class="post-header wrapper">
-  <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-  <img src="{{ page.img }}" alt="">
-  <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
-  </header>
-
-  <div class="post-content" itemprop="articleBody">
-  {{ content }}
-  </div>
-
-  <div class="wrapper" data-grid="spacing">
-    <div data-cell="1of3">
-      <section data-area="polaroid">
-        <div class="foto">
-          <img src="../img/ilustrativas/black-panther.jpg" class="landscape" alt="">
+    <section data-area="main-content">
+      <article class="post page-content" itemscope itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+          <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
+          <img src="{{ page.img }}" alt="">
+          <div data-grid="center justify spacing">
+            <div data-cell="shrink fill">
+              <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
+            </div>
+            <div data-cell="shrink fill">
+              {% include share/widget.html position='cabeçalho' %}
+            </div> 
+          </div>         
+        </header>
+        <div class="post-content" itemprop="articleBody">
+        {{ content }}
         </div>
-        <p class="center">Pantera Negra - Um filme sobre Diversidade</p>        
-      </section>
-    </div>
-    <div data-cell="1of3">
-      <section data-area="polaroid">
-        <div class="foto">
-          <img src="../img/ilustrativas/black-panther.jpg" class="landscape" alt="">
+        <div data-grid="spacing">
+          <div data-cell="1of3">
+            <section data-area="polaroid">
+              <div class="foto">
+                <img src="../img/ilustrativas/black-panther.jpg" class="landscape" alt="">
+              </div>
+              <p class="center">Pantera Negra - Um filme sobre Diversidade</p>        
+            </section>
+          </div>
+          <div data-cell="1of3">
+            <section data-area="polaroid">
+              <div class="foto">
+                <img src="../img/ilustrativas/black-panther.jpg" class="landscape" alt="">
+              </div>
+              <p class="center">Pantera Negra - Um filme sobre Diversidade</p>
+            </section>
+          </div>
+          <div data-cell="1of3">
+            <section data-area="polaroid">
+              <div class="foto">
+                <img src="../img/ilustrativas/black-panther.jpg" class="landscape" alt="">
+              </div>
+              <p class="center">Pantera Negra - Um filme sobre Diversidade</p>
+            </section>
+          </div>          
         </div>
-        <p class="center">Pantera Negra - Um filme sobre Diversidade</p>
-      </section>
-    </div>
-    <div data-cell="1of3">
-      <section data-area="polaroid">
-        <div class="foto">
-          <img src="../img/ilustrativas/black-panther.jpg" class="landscape" alt="">
-        </div>
-        <p class="center">Pantera Negra - Um filme sobre Diversidade</p>
-      </section>
-    </div>          
-  </div>
-
-  </article>
+      </article>
+      <div id="disqus_thread"></div>
+      <script>
+        (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://supersonicgabs-github-io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
   </div>
 {% include profile.html %}
 </section>
+
+<script id="dsq-count-scr" src="//supersonicgabs-github-io.disqus.com/count.js" async></script>

@@ -21,7 +21,7 @@ defaults:
     layout: post
     permalink: ':categories/:title.html'
 description: My preety awesome Github Pages boilerplate ;)
-baseurl: "/"
+baseurl: ""
 url: http://supersonicgabs.github.io
 markdown: kramdown
 paginate: 10
