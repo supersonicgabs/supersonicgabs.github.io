@@ -22,7 +22,7 @@ layout: default
         {{ content }}
         </div>
         <div data-grid="spacing">
-          {% for post in site.posts %}
+          {% for post in site.posts limit 3 %}
             {% if post.title == page.title %}
 
             {% else %}
