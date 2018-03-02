@@ -22,6 +22,7 @@ body
   box-sizing: border-box
   background-image: url('../img/layout/bg-body-4.jpg')
   background-size: 20%
+  background-attachment: fixed
   *
     box-sizing: inherit
 
@@ -238,5 +239,9 @@ pre
     max-width: unset
     height: 100%
 
-[data-area~="main-content"]
+[data-area~="content-list"]
   padding-right: $spacing-unit
+  padding-bottom: $spacing-unit
+  
+#disqus_thread
+  padding-top: $spacing-unit  

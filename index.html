@@ -6,8 +6,8 @@ isPaginated: true
 
 <div class="wrapper" data-grid="spacing">
   <div data-cell="3of4">
-      {% for post in paginator.posts %}        
-        <section data-area="main-content">
+      {% for post in paginator.posts %}
+        <section data-area="content-list">
             <h1>
               <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
             </h1>
