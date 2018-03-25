@@ -2,6 +2,8 @@
 title: "[supersonic.gabs]"
 timezone: America/Sao_Paulo
 collections:
+  paginas:
+    output: true  
   posts:
     title: Posts
     output: true

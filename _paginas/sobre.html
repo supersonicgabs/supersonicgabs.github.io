@@ -1,0 +1,61 @@
+---
+layout: page
+title: Sobre
+nav-title: Sobre
+permalink: /sobre/
+---
+
+<div class="wrapper" data-grid>
+    <div data-cell="">            
+    </div>
+</div>
+<div class="wrapper" data-grid="spacing">
+    <div data-cell="3of4" data-grid="column center">      
+        <div data-cell>
+            <h1>Sobre mim</h1>  
+            <p>
+                Meu nome é Gabriel Fonseca de Jesus Coutinho, sou desenvolvedor front-end, apaixonado por quadrinhos, filmes (Star Wars principalmente) e música (principalmente britânica).
+            </p>
+        
+            <p>
+                Desenvolvi esse blog com a inteção de compartilhar um pouco da minha opinião com vocês, sobre diversos assuntos, com foco em entrevistas com pessoas/amigos sobre suas respectivas profissões, abordando assuntos essenciais no dia a dia e também com o objetivo de estudo para melhorar os meus conhecimentos.
+            </p>
+            <p>
+                Espero que vocês absorvam algum conhecimento por aqui, e se quiser conversar sobre alguma coisa, por favor, entre em contato através de minhas redes sociais.            
+            </p>
+        </div>
+        <div data-cell="1of3 shrink center">
+            {% include share/widget.html %}
+        </div> 
+        <div data-cell="fill">
+                <h6>Últimos Posts</h6>
+                <div data-grid="spacing">
+                  {% for post in site.posts limit: 3 %}
+                    {% if post.title == page.title %}
+        
+                    {% else %}
+                      <div data-cell="1of3 shrink">
+                          <section data-area="polaroid">
+                            <div class="foto">
+                              <img src="{{ post.img }}" class="landscape" alt="">
+                            </div>
+                            <p class="center">{{ post.title }}</p>
+                          </section>
+                      </div>
+                    {% endif %}    
+                  {% endfor %}      
+            </div> 
+            </div>        
+    </div>
+    <div data-cell="1of4">
+        <div data-area="profile">
+            <div class="foto">
+                <img src="../img/ilustrativas/profile-2.JPG" alt="">
+            </div>
+            <h6>
+                    Mais tocada
+                </h6>
+                <iframe src="https://open.spotify.com/embed/user/12142391560/playlist/7HdM3o3q0yP7oLXR7WjimD" width="100%" height="380" frameborder="0" allowtransparency="true"></iframe>                       
+        </div>
+    </div>
+</div>
