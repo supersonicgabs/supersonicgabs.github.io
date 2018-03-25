@@ -8,10 +8,12 @@
         height: 230px
 
 [data-area~="profile"]
-    .foto
+    .img
         border-radius: 100%
         max-width: 100%
         overflow: hidden
+        +media-query($on-palm)
+            
     p
         padding-bottom: $spacing-unit
         margin-bottom: $spacing-unit

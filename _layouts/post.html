@@ -9,10 +9,10 @@ layout: default
         <header class="post-header">
           <h1 class="post-title" itemprop="name headline">- {{ page.title }} -</h1>
           <div data-grid="center justify spacing">
-            <div data-cell="shrink fill">
+            <div data-cell="shrink">
               <p>[{{ page.date | date: "%b %-d, %Y" }}] {% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
             </div>
-            <div data-cell="shrink fill">
+            <div data-cell="shrink">
               {% include share/widget.html position='cabeçalho' %}
             </div> 
           </div>          
@@ -34,7 +34,7 @@ layout: default
             {% if post.title == page.title %}
 
             {% else %}
-              <div data-cell="1of3 shrink">
+              <div data-cell="1of3 shrink center">
                   <section data-area="polaroid">
                     <div class="foto">
                       <img src="{{ post.img }}" class="landscape" alt="">
