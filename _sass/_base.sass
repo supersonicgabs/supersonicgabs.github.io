@@ -35,6 +35,8 @@ blockquote, pre, ul, ol, dl, figure,
 h2
   font-family: $logo-font-family
   color: $brand-color
+  +media-query($on-palm)
+    font-size: 1.6em !important
 
 h1, h4, h6
   font-family: $logo-font-family
@@ -248,6 +250,8 @@ pre
 [data-area~="content-list"]
   padding-right: $spacing-unit
   padding-bottom: $spacing-unit
+  +media-query($on-palm)
+    padding-right: 0
   
 #disqus_thread
   padding-top: $spacing-unit  
