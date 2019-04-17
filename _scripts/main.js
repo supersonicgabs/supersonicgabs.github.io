@@ -1,11 +1,12 @@
+  const allTargets = document.querySelectorAll('[data-target]');
+  const links = Array.prototype.slice.call(allTargets);
 
-  var links = Array.prototype.slice.call(document.querySelectorAll('[data-target]'));
   links.forEach(function (link){
-
-    var linkTarget = link.getAttribute('data-target');
+    const linkTarget = link.getAttribute('data-target')
+    const allTabs = document.querySelectorAll('[data-tab]')
 
     link.addEventListener('click', function(){
-      var targets = Array.prototype.slice.call(document.querySelectorAll('[data-tab]'));
+      const targets = Array.prototype.slice.call(allTabs);
       link.classList.remove('active');
       targets.forEach(function (target){
         target.setAttribute('hidden', '');
@@ -14,7 +15,6 @@
           target.removeAttribute('hidden');
           link.classList.add('active');
         }
-
       })
     });    
   });
