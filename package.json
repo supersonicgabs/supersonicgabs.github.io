@@ -1,5 +1,5 @@
 {
-  "name": "johnyplate",
+  "name": "supersonicgabs",
   "version": "1.0.0",
   "description": "My preety awesome Jekyll-Babel-Boilerplate ;)",
   "main": "gulpfile.js",
@@ -32,5 +32,9 @@
     "gulp-cli": "^1.4.0",
     "gulp-rollup": "^2.15.0",
     "gulp-sourcemaps": "^2.6.1"
+  },
+  "dependencies": {
+    "natives": "^1.1.6",
+    "npm": "^6.8.0"
   }
 }
