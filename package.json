@@ -1,14 +1,14 @@
 {
   "name": "supersonicgabs",
   "version": "1.0.0",
-  "description": "My preety awesome Jekyll-Babel-Boilerplate ;)",
+  "description": "My personal blog :]",
   "main": "gulpfile.js",
   "scripts": {
     "start": "gulp"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Johnylab/johnyplate.git"
+    "url": "git+https://github.com/supersonicgabs/supersonicgabs.git"
   },
   "keywords": [
     "jekyll",
@@ -16,12 +16,12 @@
     "babel",
     "bootstrap"
   ],
-  "author": "Johnylab",
+  "author": "supersonicgabs",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Johnylab/johnyplate/issues"
+    "url": "https://github.com/supersonicgabs/supersonicgabs/issues"
   },
-  "homepage": "http://johnylab.net/johnyplate",
+  "homepage": "http://supersonicgabs.github.io",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
