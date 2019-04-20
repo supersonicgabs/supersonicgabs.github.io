@@ -22,7 +22,7 @@ defaults:
   values:
     layout: post
     permalink: ':categories/:title.html'
-description: My preety awesome Github Pages boilerplate ;)
+description: My personal blog
 baseurl: ""
 url: 'http://supersonicgabs.github.io'
 markdown: kramdown
