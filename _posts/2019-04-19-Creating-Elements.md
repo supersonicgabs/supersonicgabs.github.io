@@ -18,7 +18,6 @@ const btnCreateEl = document.querySelector('[data-create]');
 btnCreateEl && btnCreateEl.addEventListener('click', ()=>{
   const newList = document.createElement('ul');
   const content = document.querySelector('[class="post-content"]');
-  console.log(content);
   content.appendChild(newList);
   newList.innerHTML = '<li>teste1</li><li>teste2</li>';
 });
