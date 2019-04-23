@@ -63,11 +63,11 @@ function append(parent, el){
 }
 
 const ul = document.getElementById('authors'); // Get the list where we will place our authors
-const url = 'https://randomuser.me/api/?results=10' // Get 10 random users
+const url = 'https://randomuser.me/api/?results=10'; // Get 10 random users
 
 fetch(url) // Call the fetch function passing the url of the API as a parameter
 .then((resp)=> resp.json()) // Transform the data into JSON
-.then(function(){
+.then(function(data){
   // Your code for handling the data you get from the API
   // Create and append the li's to the ul
   let authors = data.results; // Get the results
@@ -84,7 +84,7 @@ fetch(url) // Call the fetch function passing the url of the API as a parameter
     append(ul, li);
   })
 })
-.catch(function(){
-  // This is where you run code if the server returns any errors
+.catch(function(error){
+  console.log(error);
 })
 
