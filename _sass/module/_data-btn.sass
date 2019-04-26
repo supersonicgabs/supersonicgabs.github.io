@@ -16,6 +16,18 @@
         transform: translateY(-1px)
         background-color: $compl-color
 
+    +variant(link)
+        background-color: transparent
+        svg
+            width: $spacing-unit
+            height: $spacing-unit
+            path
+                fill: $compl-color
+
+        &:hover, &:focus, &:active
+            background-color: transparent
+            box-shadow: none        
+
 .active
     color: #fff
     text-decoration: none

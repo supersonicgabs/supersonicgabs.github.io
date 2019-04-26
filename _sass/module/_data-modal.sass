@@ -1,0 +1,117 @@
+@include module(modal)
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    z-index: 9999
+    margin: auto
+    background-color: rgba(#000, .6)
+    animation: fade-in .3s ease-in-out forwards
+    padding: $spacing-unit * 2
+
+    @include media-query($on-laptop)
+        padding: $spacing-unit
+
+    > *
+        position: relative
+        padding: $spacing-unit + ($spacing-unit/2) $spacing-unit 0 $spacing-unit
+        border-radius: 4px
+
+        @include media-query($on-palm)
+            padding: $spacing-unit / 2
+            padding-top: $spacing-unit + 10px
+
+    .lightbox-prev
+        +media-query($on-palm)
+            position: absolute
+            left: 0
+            padding-top: 80px
+
+    .lightbox-next
+        +media-query($on-palm)
+            position: absolute
+            right: 0
+            padding-top: 80px
+
+    .modal-content
+        max-height: 75vh
+        overflow: auto
+        background-color: $grey-color-dark
+        box-shadow: 0 5px 30px 0 rgba(#000, .8)
+
+        .video-container
+            width: 560px
+            max-width: 100%
+
+    [data-btn~="fechar"]
+        position: absolute
+        background-color: transparent
+        top: $spacing-unit / 4
+        right: $spacing-unit
+        z-index: 9999
+        margin: 0
+        padding: 0
+        line-height: 1
+        color: $grey-color-light
+        box-shadow: none
+
+        svg
+            width: 25px
+            height: 25px
+            color: inherit
+
+            *
+                fill: currentcolor
+
+    &:not(:target):not(.target)
+        display: none
+        opacity: 0
+
+    +variant(transparent)
+        > *
+            background-color: transparent
+            box-shadow: none
+
+    @include variant(slide)
+        > *
+            -webkit-animation: slide-in .6s ease-in-out forwards
+            animation: slide-in .6s ease-in-out forwards
+
+    @include variant(fast)
+        -webkit-animation-duration: .1s
+        animation-duration: .1s
+
+    @include media-query($on-palm)
+        iframe
+            max-width: 220px
+            max-height: 420px
+
+@-webkit-keyframes fade-in
+    0%
+        opacity: 0
+    100%
+        opacity: 1
+
+@keyframes fade-in
+    0%
+        opacity: 0
+    100%
+        opacity: 1
+
+@-webkit-keyframes slide-in
+    0%
+        -webkit-transform: translateY(-100%)
+        opacity: 0
+    100%
+   
+        -webkit-transform: translateY(0)
+        opacity: 1
+
+@keyframes slide-in
+    0%
+        transform: translateY(-100%)
+        opacity: 0
+    100%
+        transform: translateY(0)
+        opacity: 1

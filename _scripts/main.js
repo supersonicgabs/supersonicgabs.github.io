@@ -1,3 +1,18 @@
+import Slider from './lib/Slider';
+import Carousel from './lib/Carousel';
+import Lightbox from './lib/Lightbox';
+import {configSlider} from './lib/configSlider';
+import {
+  _map,
+  screen,
+  _toggle,
+  _show,
+  createElement,
+  _hide
+} from './util/helpers';
+
+// ------ TABS ------
+
 const allTargets = document.querySelectorAll('[data-target]');
 const links = Array.prototype.slice.call(allTargets);
 
@@ -21,6 +36,8 @@ links.forEach(function (link){
   });
 });
 
+// ------ CREATE ELEMENT ------
+
 const btnCreateEl = document.querySelector('[data-create]');
 btnCreateEl && btnCreateEl.addEventListener('click', ()=>{
   const newList = document.createElement('ul');
@@ -28,6 +45,8 @@ btnCreateEl && btnCreateEl.addEventListener('click', ()=>{
   content.appendChild(newList);
   newList.innerHTML = '<li>teste1</li><li>teste2</li>';
 });
+
+// ------ SUMREDUCER WITH FLAT ------
 
 function sumReducer() {
   //converter arguments em array
@@ -54,6 +73,7 @@ resultSum && resultSum.addEventListener('click', ()=>{
   newDiv.innerHTML = `${result}`
 })
 
+// ------ FETCH ------
 function createNode(element){
   return document.createElement(element); // Create the type of element you pass in the parameters
 }
@@ -88,3 +108,22 @@ fetch(url) // Call the fetch function passing the url of the API as a parameter
   console.log(error);
 })
 
+// ------ SLIDER WITH LIGHTBOX ------
+window.sliders = _map('.slider', parent => {
+  const slider = new Slider({
+    parent
+  });
+  configSlider(slider, parent);
+});
+
+window.carousels = _map('.carousel', parent => {
+  const size = parent.getAttribute('data-size') | 0;
+  const carousel = new Carousel({
+    parent,
+    size
+  });
+  configSlider(carousel, parent);
+  return carousel;
+});
+
+var lightbox = new Lightbox("[data-lightbox]");
