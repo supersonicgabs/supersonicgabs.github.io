@@ -23,7 +23,7 @@ layout: default
         </div>
         <h6>Veja também</h6>
         <div data-grid="spacing">
-          {% for post in site.posts limit: 3 %}
+          {% for post in site.posts limit: 4 %}
             {% if post.title == page.title %}
 
             {% else %}
@@ -32,35 +32,13 @@ layout: default
                     <div class="foto">
                       <img src="{{ post.img }}" class="landscape" alt="">
                     </div>
-                    <p class="center">{{ post.title }}</p>
+                    <p class="center">
+                      <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                    </p>
                   </section>
               </div>
             {% endif %}    
-          {% endfor %}
-          <!--<div data-cell="1of3">
-            <section data-area="polaroid">
-              <div class="foto">
-                <img src="../img/ilustrativas/black-panther.jpg" class="landscape" alt="">
-              </div>
-              <p class="center">Pantera Negra - Um filme sobre Diversidade</p>        
-            </section>
-          </div>
-          <div data-cell="1of3">
-            <section data-area="polaroid">
-              <div class="foto">
-                <img src="../img/ilustrativas/black-panther.jpg" class="landscape" alt="">
-              </div>
-              <p class="center">Pantera Negra - Um filme sobre Diversidade</p>
-            </section>
-          </div>
-          <div data-cell="1of3">
-            <section data-area="polaroid">
-              <div class="foto">
-                <img src="../img/ilustrativas/black-panther.jpg" class="landscape" alt="">
-              </div>
-              <p class="center">Pantera Negra - Um filme sobre Diversidade</p>
-            </section>
-          </div>-->          
+          {% endfor %}  
         </div>
       </article>
       <div id="disqus_thread"></div>

@@ -15,37 +15,7 @@ img: "../img/ilustrativas/vanilla-js.jpg"
 
 Carousel with Lightbox using pure vanilla js.
 
-```javacript
-  function createNode(element) {
-      return document.createElement(element);
-  }
-
-  function append(parent, el) {
-    return parent.appendChild(el);
-  }
-
-  const ul = document.getElementById('authors');
-  const url = 'https://randomuser.me/api/?results=10';
-  fetch(url)
-  .then((resp) => resp.json())
-  .then(function(data) {
-    let authors = data.results;
-    return authors.map(function(author) {
-      let li = createNode('li'),
-          img = createNode('img'),
-          span = createNode('span');
-      img.src = author.picture.medium;
-      span.innerHTML = `${author.name.first} ${author.name.last}`;
-      append(li, img);
-      append(li, span);
-      append(ul, li);
-    })
-  })
-  .catch(function(error) {
-    console.log(JSON.stringify(error));
-  });
-```
-<h1>Authors</h1>
+<h1>Demo</h1>
 <div class="container-carousel">
     <section data-grid="row center" class="page-content">
         <button type="button" data-btn="link" data-control="#oculos-sol" class="icon" data-action="prev">
@@ -92,3 +62,44 @@ Carousel with Lightbox using pure vanilla js.
         </button>
     </section>
 </div>
+
+Main:
+
+```javacript
+import Slider from './lib/Slider';
+import Carousel from './lib/Carousel';
+import Lightbox from './lib/Lightbox';
+import {configSlider} from './lib/configSlider';
+import {
+  _map,
+  screen,
+  _toggle,
+  _show,
+  createElement,
+  _hide
+} from './util/helpers';
+
+window.sliders = _map('.slider', parent => {
+  const slider = new Slider({
+    parent
+  });
+  configSlider(slider, parent);
+});
+
+window.carousels = _map('.carousel', parent => {
+  const size = parent.getAttribute('data-size') | 0;
+  const carousel = new Carousel({
+    parent,
+    size
+  });
+  configSlider(carousel, parent);
+  return carousel;
+});
+
+var lightbox = new Lightbox("[data-lightbox]");
+```
+
+Slider.js
+
+```javacript
+```
