@@ -2,6 +2,7 @@ import Slider from './lib/Slider';
 import Carousel from './lib/Carousel';
 import Lightbox from './lib/Lightbox';
 import {configSlider} from './lib/configSlider';
+import mascaras from './util/maks';
 import {
   _map,
   screen,
@@ -12,7 +13,6 @@ import {
 } from './util/helpers';
 
 // ------ TABS ------
-
 const allTargets = document.querySelectorAll('[data-target]');
 const links = Array.prototype.slice.call(allTargets);
 
@@ -37,7 +37,6 @@ links.forEach(function (link){
 });
 
 // ------ CREATE ELEMENT ------
-
 const btnCreateEl = document.querySelector('[data-create]');
 btnCreateEl && btnCreateEl.addEventListener('click', ()=>{
   const newList = document.createElement('ul');
@@ -47,7 +46,6 @@ btnCreateEl && btnCreateEl.addEventListener('click', ()=>{
 });
 
 // ------ SUMREDUCER WITH FLAT ------
-
 function sumReducer() {
   //converter arguments em array
   const args = Array.prototype.slice.call(arguments);
@@ -127,3 +125,82 @@ window.carousels = _map('.carousel', parent => {
 });
 
 var lightbox = new Lightbox("[data-lightbox]");
+
+// ------ MASKS ------
+const each = (i, f) => Array.prototype.forEach.call(i, f);
+const form = document.querySelectorAll('form');
+
+if (form.length) each(form, FormMask);
+function FormMask(f) {
+  (Array.from(f.elements))
+      .filter(el => el.hasAttribute('data-mask'))
+      .forEach(campo => campo.addEventListener('input', function () {
+        const metodo = this.getAttribute('data-mask');
+        if (!mascaras[metodo]) return console.log(`A máscara do tipo "${metodo}" não foi definida.`);
+
+        mascaras[metodo](this);
+  }));
+}
+
+// ------ CRUD WITH JS ------
+const nome = document.querySelector('#nome')
+const pk = document.querySelector('#cpfcnpj')
+const email = document.querySelector('#email')
+
+function makeObj(data){
+  return {
+    nome: nome.value,
+    cpf: pk.value,
+    email: email.value
+  }
+}
+
+let array = []
+const clearForm = document.querySelector('.contact-form')
+
+document.querySelector('.enviar').onclick = function(){
+  if(nome.value!=null, nome.value!="" && pk.value!=null, pk.value!="" && email.value!=null, email.value!=""){
+    let indexArray = array.findIndex(elem => {
+      return elem.cpf===pk.value
+    })
+    if(indexArray > -1){
+      array[indexArray] = makeObj()
+    }
+    else{
+      array.push(makeObj())
+    }
+    transformText(array);
+    clearForm.reset();
+  }
+  else{
+    alert('Preencha todos os campos!')
+  }
+}
+
+function transformText(array){
+  // const objectText = JSON.stringify({array}, null, " ")
+  // const dataContainer = document.querySelector('.results_display');
+  // dataContainer.textContent = objectText;
+  const objectText = array.reduce((acc, item, index) =>{
+    acc+= `<ul><li>${item.nome}</li><li>${item.cpf}</li><li>${item.email}</li></ul>`
+    return acc
+  }, '')
+  const dataContainer = document.querySelector('.results_display');
+  dataContainer.textContent = objectText;
+}
+
+function arrayRemove(arr, value){ //retorna todos os elementos do array menos o que você passar
+  return arr.filter((ele, index) => {return index != value})
+}
+
+document.querySelector('.deletar').onclick = function(){
+  let indexArray = array.findIndex(elem => {
+    return elem.cpf === pk.value
+  })
+
+  if(indexArray > -1){
+    array = arrayRemove(array, indexArray)
+  }
+  transformText(array);
+  clearForm.reset();
+}
