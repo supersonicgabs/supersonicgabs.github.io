@@ -1,6 +1,6 @@
 ---
 title: Sum only numbers in array using .flat()
-date: 2019-04-17 00:00:00 Z
+date: 2019-04-19 00:00:00 Z
 categories:
 - Javascript
 tags:

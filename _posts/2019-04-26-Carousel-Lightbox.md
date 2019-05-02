@@ -24,35 +24,23 @@ Carousel with Lightbox using pure vanilla js.
             </svg>
         </button>
         <section id="oculos-sol" class="carousel" data-size="3" data-grid="row center justify" data-options="">
-            <div class="slide" data-cell="shrink">
-                <div class="foto">
-                    <img data-lightbox src="{{site.baseurl}}/img/ilustrativas/black-panther.jpg" />
-                </div>
+            <div class="img slide">
+                <img data-lightbox src="../img/ilustrativas/black-panther.jpg" />
             </div>
-            <div class="slide" data-cell="shrink">
-                <div class="foto">
-                    <img data-lightbox src="{{site.baseurl}}/img/ilustrativas/profile-2.JPG" />
-                </div>
+            <div class="img slide">
+                <img data-lightbox src="../img/ilustrativas/profile-2.JPG" />
             </div>
-            <div class="slide" data-cell="shrink">
-                <div class="foto">
-                    <img data-lightbox src="{{site.baseurl}}/img/ilustrativas/profile.JPG" />
-                </div>
+            <div class="img slide">
+                <img data-lightbox src="../img/ilustrativas/profile.JPG" />
             </div>
-            <div class="slide">
-                <div class="foto">
-                    <img data-lightbox src="{{site.baseurl}}/img/ilustrativas/vanilla-js.jpg" />
-                </div>
+            <div class="img slide">
+                <img data-lightbox src="../img/ilustrativas/vanilla-js.jpg" />
             </div>
-            <div class="slide">
-                <div class="foto">
-                    <img data-lightbox src="{{site.baseurl}}/img/ilustrativas/black-panther.jpg" />
-                </div>
+            <div class="img slide">
+                <img data-lightbox src="../img/ilustrativas/black-panther.jpg" />
             </div>
-            <div class="slide">
-                <div class="foto">
-                    <img data-lightbox src="{{site.baseurl}}/img/ilustrativas/profile.jpg" />
-                </div>
+            <div class="img slide">
+                <img data-lightbox src="../img/ilustrativas/profile.jpg" />
             </div>
         </section>
         <button type="button" data-btn="link" data-control="#oculos-sol" class="icon" data-action="next">

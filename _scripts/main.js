@@ -80,7 +80,7 @@ function append(parent, el){
   return parent.appendChild(el); // Append the second parameter(element) to the first one
 }
 
-const ul = document.getElementById('authors'); // Get the list where we will place our authors
+const grid = document.getElementById('authors'); // Get the list where we will place our authors
 const url = 'https://randomuser.me/api/?results=10'; // Get 10 random users
 
 fetch(url) // Call the fetch function passing the url of the API as a parameter
@@ -90,16 +90,18 @@ fetch(url) // Call the fetch function passing the url of the API as a parameter
   // Create and append the li's to the ul
   let authors = data.results; // Get the results
   return authors.map(function(author){
-    let li = createNode('li'), // Create the elements we need
+    let div = createNode('div'), // Create the elements we need
         img = createNode('img'),
-        span = createNode('span');
+        p = createNode('p');
     img.src = author.picture.medium; 
+    div.setAttribute('data-cell', 'shrink');
+    div.setAttribute('data-text', 'center');
     // Add the source of the image to be the src of the img element
-    span.innerHTML = `${author.name.first} ${author.name.last}`; 
-    // Make the HTML of our span to be the first and last name of our author
-    append(li, img); // Append all our elements
-    append(li, span);
-    append(ul, li);
+    p.innerHTML = `${author.name.first} ${author.name.last}`; 
+    // Make the HTML of our p to be the first and last name of our author
+    append(div, img); // Append all our elements
+    append(div, p);
+    append(grid, div);
   })
 })
 .catch(function(error){
@@ -157,8 +159,10 @@ function makeObj(data){
 
 let array = []
 const clearForm = document.querySelector('.contact-form')
+const btnEnviar = document.querySelector('.enviar');
+const btnDeletar = document.querySelector('.deletar');
 
-document.querySelector('.enviar').onclick = function(){
+btnEnviar && btnEnviar.addEventListener('click', ()=>{
   if(nome.value!=null, nome.value!="" && pk.value!=null, pk.value!="" && email.value!=null, email.value!=""){
     let indexArray = array.findIndex(elem => {
       return elem.cpf===pk.value
@@ -175,7 +179,7 @@ document.querySelector('.enviar').onclick = function(){
   else{
     alert('Preencha todos os campos!')
   }
-}
+})
 
 function transformText(array){
   // const objectText = JSON.stringify({array}, null, " ")
@@ -186,14 +190,14 @@ function transformText(array){
     return acc
   }, '')
   const dataContainer = document.querySelector('.results_display');
-  dataContainer.textContent = objectText;
+  dataContainer.innerHTML = objectText;
 }
 
 function arrayRemove(arr, value){ //retorna todos os elementos do array menos o que você passar
   return arr.filter((ele, index) => {return index != value})
 }
 
-document.querySelector('.deletar').onclick = function(){
+btnDeletar && btnDeletar.addEventListener('click', ()=> {
   let indexArray = array.findIndex(elem => {
     return elem.cpf === pk.value
   })
@@ -203,4 +207,17 @@ document.querySelector('.deletar').onclick = function(){
   }
   transformText(array);
   clearForm.reset();
-}
+})
+
+// ------TOGGLE BUTTON------
+const toggleBtn = document.querySelector('[data-toggle]');
+const toggleContent = document.querySelector('[data-content]');
+
+toggleBtn && toggleBtn.addEventListener('click', ()=>{
+  if(toggleContent.hasAttribute('hidden')){
+    toggleContent.removeAttribute('hidden')
+  }
+  else{
+    toggleContent.setAttribute('hidden', '')
+  }
+})
