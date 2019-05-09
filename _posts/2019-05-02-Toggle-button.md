@@ -31,3 +31,6 @@ toggleBtn && toggleBtn.addEventListener('click', ()=>{
 <a data-btn data-toggle>toggle</a>
 
 <p data-content hidden>Hello World!<p>
+
+<section data-grid="cols-3 spacing" data-characters></section>
+<section data-grid="cols-3 spacing" data-characters-filter></section>

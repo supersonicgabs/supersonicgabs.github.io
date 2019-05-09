@@ -149,7 +149,7 @@ const nome = document.querySelector('#nome')
 const pk = document.querySelector('#cpfcnpj')
 const email = document.querySelector('#email')
 
-function makeObj(data){
+function makeObj(){
   return {
     nome: nome.value,
     cpf: pk.value,
@@ -221,3 +221,84 @@ toggleBtn && toggleBtn.addEventListener('click', ()=>{
     toggleContent.setAttribute('hidden', '')
   }
 })
+
+// ------ MAP AND FILTER ------
+let data = [
+  {
+    name: 'Butters',
+    age: 3,
+    type: 'dog'
+  },
+  {
+    name: 'Lizzy',
+    age: 6,
+    type: 'dog'
+  },
+  {
+    name: 'Red',
+    age: 1,
+    type: 'cat'
+  },
+  {
+    name: 'Joey',
+    age: 3,
+    type: 'dog'
+  }
+]
+
+let dogs = data.filter((animal)=>{
+  return animal.type === 'dog'
+})
+
+dogs.map((animal)=>{
+  return animal.age *= 7
+})
+
+const calcAge = dogs.reduce((sum, animal)=>{
+  return sum + animal.age
+}, 0)
+
+console.log(dogs);
+console.log(calcAge);
+
+// ------ FILTER FETCH RESULTS ------
+
+const dataGrid = document.querySelector('[data-characters]')
+const dataGridFilter = document.querySelector('[data-characters-filter]')
+const swapi = 'https://swapi.co/api/people/'
+
+fetch(swapi)
+.then((resp)=> resp.json())
+.then(function(data){
+  console.log(data.results);
+  let people = data.results
+  const peopleMap = people.map((item)=>{
+    let div = createNode('div'),
+        p = createNode('p');
+    div.setAttribute('data-cell', 'shrink');
+    div.setAttribute('data-text', 'center');
+    p.innerHTML = `${item.name}`;
+    append(div, p);
+    append(dataGrid, div)
+  })  
+
+  const peopleFilter = people.filter((item)=>{
+    return item.hair_color === 'blond';
+  })
+
+  const peopleFilterMap = peopleFilter.map((item)=>{
+    let div = createNode('div'),
+        p = createNode('p');
+    div.setAttribute('data-cell', 'shrink');
+    div.setAttribute('data-text', 'center');
+    p.innerHTML = `${item.name}`;
+    append(div, p);
+    append(dataGridFilter, div)
+  })
+
+  return {peopleMap, peopleFilterMap}
+})
+.catch((error)=>{
+  console.log(error);  
+})
+
