@@ -12,6 +12,8 @@ import {
   _hide
 } from './util/helpers';
 
+import {_createNode, _append, _toggleItself} from './util/myHelpers.js';
+
 // ------ TABS ------
 const allTargets = document.querySelectorAll('[data-target]');
 const links = Array.prototype.slice.call(allTargets);
@@ -72,13 +74,13 @@ resultSum && resultSum.addEventListener('click', ()=>{
 })
 
 // ------ FETCH ------
-function createNode(element){
-  return document.createElement(element); // Create the type of element you pass in the parameters
-}
+// function createNode(element){
+//   return document.createElement(element); // Create the type of element you pass in the parameters
+// }
 
-function append(parent, el){
-  return parent.appendChild(el); // Append the second parameter(element) to the first one
-}
+// function append(parent, el){
+//   return parent.appendChild(el); // Append the second parameter(element) to the first one
+// }
 
 const grid = document.getElementById('authors'); // Get the list where we will place our authors
 const url = 'https://randomuser.me/api/?results=10'; // Get 10 random users
@@ -90,18 +92,18 @@ fetch(url) // Call the fetch function passing the url of the API as a parameter
   // Create and append the li's to the ul
   let authors = data.results; // Get the results
   return authors.map(function(author){
-    let div = createNode('div'), // Create the elements we need
-        img = createNode('img'),
-        p = createNode('p');
+    let div = _createNode('div'), // Create the elements we need
+        img = _createNode('img'),
+        p = _createNode('p');
     img.src = author.picture.medium; 
     div.setAttribute('data-cell', 'shrink');
     div.setAttribute('data-text', 'center');
     // Add the source of the image to be the src of the img element
     p.innerHTML = `${author.name.first} ${author.name.last}`; 
     // Make the HTML of our p to be the first and last name of our author
-    append(div, img); // Append all our elements
-    append(div, p);
-    append(grid, div);
+    _append(div, img); // Append all our elements
+    _append(div, p);
+    _append(grid, div);
   })
 })
 .catch(function(error){
@@ -210,17 +212,19 @@ btnDeletar && btnDeletar.addEventListener('click', ()=> {
 })
 
 // ------TOGGLE BUTTON------
-const toggleBtn = document.querySelector('[data-toggle]');
-const toggleContent = document.querySelector('[data-content]');
+// const toggleBtn = document.querySelector('[data-toggle]');
+// const toggleContent = document.querySelector('[data-content]');
 
-toggleBtn && toggleBtn.addEventListener('click', ()=>{
-  if(toggleContent.hasAttribute('hidden')){
-    toggleContent.removeAttribute('hidden')
-  }
-  else{
-    toggleContent.setAttribute('hidden', '')
-  }
-})
+// toggleBtn && toggleBtn.addEventListener('click', ()=>{
+
+//   if(toggleContent.hasAttribute('hidden')){
+//     toggleContent.removeAttribute('hidden')
+//   }
+//   else{
+//     toggleContent.setAttribute('hidden', '')
+//   }
+// })
+_toggleItself(document.querySelector('[data-toggle]'), document.querySelector('[data-content]'))
 
 // ------ MAP AND FILTER ------
 let data = [
@@ -273,13 +277,13 @@ fetch(swapi)
   console.log(data.results);
   let people = data.results
   const peopleMap = people.map((item)=>{
-    let div = createNode('div'),
-        p = createNode('p');
+    let div = _createNode('div'),
+        p = _createNode('p');
     div.setAttribute('data-cell', 'shrink');
     div.setAttribute('data-text', 'center');
     p.innerHTML = `${item.name}`;
-    append(div, p);
-    append(dataGrid, div)
+    _append(div, p);
+    _append(dataGrid, div)
   })  
 
   const peopleFilter = people.filter((item)=>{
@@ -287,13 +291,13 @@ fetch(swapi)
   })
 
   const peopleFilterMap = peopleFilter.map((item)=>{
-    let div = createNode('div'),
-        p = createNode('p');
+    let div = _createNode('div'),
+        p = _createNode('p');
     div.setAttribute('data-cell', 'shrink');
     div.setAttribute('data-text', 'center');
     p.innerHTML = `${item.name}`;
-    append(div, p);
-    append(dataGridFilter, div)
+    _append(div, p);
+    _append(dataGridFilter, div)
   })
 
   return {peopleMap, peopleFilterMap}
