@@ -6,8 +6,8 @@ categories:
 tags:
 - javascript,
 - vanilla,
-- toggle
-- button
+- fetch
+- filter
 excerpt: 'Making requisition in SWAPI using Fetch and Filter.'
 img: "../img/ilustrativas/vanilla-js.jpg"
 ---

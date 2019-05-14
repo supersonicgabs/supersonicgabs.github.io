@@ -75,7 +75,6 @@ function _toggle(show, hide) {
     }
   
     return element(el, attrs);
-  
   }
   
   export {

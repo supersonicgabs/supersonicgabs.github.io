@@ -306,3 +306,15 @@ fetch(swapi)
   console.log(error);  
 })
 
+// ------ AJAX REQUEST ------
+const Http = new XMLHttpRequest();
+const url1='https://swapi.co/api/people/';
+Http.open('GET', url1);
+Http.send();
+
+Http.onreadystatechange=function(){
+  if(this.readyState==4 && this.status==200){
+    console.log(JSON.parse(Http.responseText));
+    console.log(JSON.parse(Http.responseText).results);
+  }
+}
