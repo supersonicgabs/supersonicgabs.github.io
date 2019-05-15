@@ -318,3 +318,35 @@ Http.onreadystatechange=function(){
     console.log(JSON.parse(Http.responseText).results);
   }
 }
+
+// ------ MENU HOVER ------
+const allTargets = document.querySelectorAll('[data-to]');
+const links = Array.prototype.slice.call(allTargets);
+const allTabs = document.querySelectorAll('[data-tab]')
+
+links.forEach(function (link){
+  const linkTarget = link.getAttribute('data-to')
+
+  link.addEventListener('mouseover', function(){
+    const targets = Array.prototype.slice.call(allTabs);      
+    targets.forEach(function (target){
+      target.setAttribute('hidden', '');
+
+      if(linkTarget === target.getAttribute('data-tab')){
+        target.removeAttribute('hidden');
+        links.forEach(btn =>{
+          btn.classList.remove('active');
+        })
+        link.classList.add('active');
+      }
+    })
+  });
+});
+
+const menuPrincipal = document.querySelector('[data-menu]')
+menuPrincipal && menuPrincipal.addEventListener('mouseleave', ()=>{
+    const targets = Array.prototype.slice.call(allTabs);
+    targets.forEach(function (target){
+      target.setAttribute('hidden', '');
+    })
+})
