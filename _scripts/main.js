@@ -320,21 +320,21 @@ Http.onreadystatechange=function(){
 }
 
 // ------ MENU HOVER ------
-const allTargets = document.querySelectorAll('[data-to]');
-const links = Array.prototype.slice.call(allTargets);
-const allTabs = document.querySelectorAll('[data-tab]')
+const allTargets2 = document.querySelectorAll('[data-to]');
+const links2 = Array.prototype.slice.call(allTargets2);
+const allTabs2 = document.querySelectorAll('[data-tab]')
 
-links.forEach(function (link){
+links2.forEach(function (link){
   const linkTarget = link.getAttribute('data-to')
 
   link.addEventListener('mouseover', function(){
-    const targets = Array.prototype.slice.call(allTabs);      
+    const targets = Array.prototype.slice.call(allTabs2);      
     targets.forEach(function (target){
       target.setAttribute('hidden', '');
 
       if(linkTarget === target.getAttribute('data-tab')){
         target.removeAttribute('hidden');
-        links.forEach(btn =>{
+        links2.forEach(btn =>{
           btn.classList.remove('active');
         })
         link.classList.add('active');
@@ -345,8 +345,26 @@ links.forEach(function (link){
 
 const menuPrincipal = document.querySelector('[data-menu]')
 menuPrincipal && menuPrincipal.addEventListener('mouseleave', ()=>{
-    const targets = Array.prototype.slice.call(allTabs);
+    const targets = Array.prototype.slice.call(allTabs2);
     targets.forEach(function (target){
       target.setAttribute('hidden', '');
     })
+})
+
+// ------ SEARCH ------
+const search = document.querySelector('[data-search]')
+
+search && search.addEventListener('input', ()=>{
+  const filter = search.value
+  const ul = document.querySelector('[data-results]')
+  const li = document.getElementsByTagName('li');
+  ul.innerHTML="";
+  const arrayLi = Array.from(li)
+  arrayLi.filter((item)=>{
+    const itemLower = item.textContent.toLowerCase()     
+    const filterLower = filter.toLowerCase()
+    if(filterLower && itemLower.match(filterLower)){
+      ul.innerHTML += `<li>${item.textContent}</li>`
+    }
+  }) 
 })
