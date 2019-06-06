@@ -388,3 +388,47 @@ search && search.addEventListener('input', ()=>{
 //     }
 //   }) 
 // })
+
+// ------ TABS ITSELF ------
+const allLinks = document.querySelectorAll('[data-link]');
+const allSections = document.querySelectorAll('[data-section]')
+const linksArr = Array.from(allLinks);
+const sectionsArr = Array.from(allSections)
+
+linksArr.map((link)=>{
+  sectionsArr.map(((section)=>{
+    const attLink = link.getAttribute('data-link')
+    const attSection = section.getAttribute('data-section')
+    link.addEventListener('click', ()=>{
+      if(attLink === attSection){
+        _toggleItself(link, section)
+        section.removeAttribute('hidden')
+      }
+      else {
+        section.setAttribute('hidden', '')
+      }
+    })
+  }))
+})
+
+// linksArr.map((link)=>{
+//   link.addEventListener('click', function(){     
+//     sectionsArr.map((target)=>{
+//       const linkLink = link.getAttribute('data-link')
+//       const sectionTarget = target.getAttribute('data-section')
+
+//       target.setAttribute('hidden', '');
+
+//       if(linkLink === sectionTarget){
+//         target.removeAttribute('hidden');
+
+//         linksArr.map(btn => btn.classList.remove('active'))
+//         link.classList.add('active');
+//       }
+
+//       else if(linkLink === sectionTarget && !target.hasAttribute('hidden')){
+//         target.setAttribute('hidden', '')
+//       }
+//     })
+//   });
+// });
