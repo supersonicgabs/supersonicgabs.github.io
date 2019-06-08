@@ -11,9 +11,11 @@ function _toggleItself(btn, content){
       
       if(content.hasAttribute('hidden')){
         content.removeAttribute('hidden')
+        btn.classList.add('active')
       }
       else{
         content.setAttribute('hidden', '')
+        btn.classList.remove('active')
       }
     })    
 }

@@ -402,6 +402,8 @@ linksArr.map((link)=>{
     link.addEventListener('click', ()=>{
       if(attLink === attSection){
         _toggleItself(link, section)
+        linksArr.map(btn =>btn.classList.remove('active'))
+        link.classList.add('active');        
         section.removeAttribute('hidden')
       }
       else {
